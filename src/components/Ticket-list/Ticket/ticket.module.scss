@@ -1,0 +1,112 @@
+.ticket__container {
+  width: 100%;
+  height: 184px;
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 50px 20px 20px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+}
+.ticket__info-upper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.ticket__price {
+  font-family: Open Sans;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0;
+  text-align: left;
+  color: #2196F3;
+}
+.ticket__logo {
+
+}
+.ticket__info-down {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.ticket__city {
+
+}
+.ticket__city-cities {
+  font-family: Open Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: #A0B0B9;
+  margin: 10px 0 0 0;
+}
+.ticket__city-time {
+  font-family: Open Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0;
+  text-align: left;
+  color: #4A4A4A;
+  margin: 0;
+}
+.ticket__time {
+
+}
+.ticket__time-title {
+  font-family: Open Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: #A0B0B9;
+  text-transform: uppercase;
+  margin: 10px 0 0 0;
+}
+.ticket__time-time {
+  font-family: Open Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0;
+  text-align: left;
+  color: #4A4A4A;
+  margin: 0;
+}
+.ticket__transfer {
+
+}
+.ticket__transfer-title {
+  font-family: Open Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: #A0B0B9;
+  text-transform: uppercase;
+  margin: 10px 0 0 0;
+}
+.ticket__transfer-cities {
+  font-family: Open Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0;
+  text-align: left;
+  color: #4A4A4A;
+  margin: 0;
+}

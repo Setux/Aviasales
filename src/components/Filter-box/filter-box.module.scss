@@ -1,0 +1,62 @@
+.filter-box {
+  width: 27%;
+  height: 252px;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+}
+.filter-title {
+  font-family: Open Sans;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 12px;
+  letter-spacing: 0.5px;
+  text-align: left;
+  margin: 20px 0 0 0;
+  text-transform: uppercase;
+  padding-left: 1.4em;
+}
+.filter-list {
+  list-style: none;
+  width: 100%;
+  font-family: Open Sans;
+  font-size: 13px;
+  line-height: 20px;
+  padding:0;
+  margin: 10px 0 0 0;
+}
+.filter-item {
+  box-sizing: border-box;
+  width: 100%;
+  cursor: pointer;
+}
+.filter-item:hover {
+  background-color: #F1FCFF;
+}
+.filter__label {
+  cursor: pointer;
+  display: block;
+  padding: 10px 0 10px 2.8em;
+  box-sizing: border-box;
+  width: 100%;
+}
+.filter__input {
+  appearance: none;
+}
+.filter__check {
+  background-image: url("notchecked.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  margin-left: -1.8em;
+}
+.filter__input:checked + .filter__check {
+  background-image: url("checked.svg");
+}

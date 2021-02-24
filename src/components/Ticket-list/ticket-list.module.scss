@@ -1,0 +1,12 @@
+.ticket-list {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+}
+.ticket-item {
+  width: 100%;
+  margin-top: 20px;
+}
+.ticket-item:first-child {
+  margin-top: 0;
+}
