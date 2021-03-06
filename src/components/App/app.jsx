@@ -1,6 +1,7 @@
 import React from 'react';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 import FilterBox from '../Filter-box';
 import Tabs from '../Tabs';
 import TicketList from '../Ticket-list';
@@ -8,7 +9,14 @@ import classes from './app.module.scss';
 import logo from './logo.svg';
 import filterReducer from '../../reducer';
 
-const store = createStore(filterReducer);
+const composeEnhancers =
+  typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+        // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+      })
+    : compose;
+
+const store = createStore(filterReducer, composeEnhancers(applyMiddleware(thunk)));
 
 const App = () => (
   <Provider store={store}>

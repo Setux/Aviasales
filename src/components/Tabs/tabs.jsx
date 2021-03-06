@@ -6,7 +6,8 @@ import classes from './tabs.module.scss';
 
 const classNames = require('classnames');
 
-const Tabs = ({ state, setCheap, setFast }) => {
+const Tabs = (props) => {
+  const { data, setCheap, setFast } = props;
   // eslint-disable-next-line consistent-return
   const setClass = (item) => {
     if (item.isCheap && item.isActive) {
@@ -32,8 +33,8 @@ const Tabs = ({ state, setCheap, setFast }) => {
       </div>
     );
   };
-  const firstItem = state.bar[0];
-  const secondItem = state.bar[1];
+  const firstItem = data[0];
+  const secondItem = data[1];
   return (
     <section className={classes.tabs}>
       {renderBarItem(firstItem, setCheap)}
@@ -43,20 +44,11 @@ const Tabs = ({ state, setCheap, setFast }) => {
 };
 
 Tabs.propTypes = {
-  state: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
   setCheap: PropTypes.func.isRequired,
   setFast: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({ state });
+const mapStateToProps = (state) => state.bar;
 
 export default connect(mapStateToProps, actions)(Tabs);
-
-// (
-//     <section className={classes.tabs}>
-//         <div className={`${classes.tabs__el  } ${  classes.tabs__el_cheap  } ${  classes.active}`}>
-//             Самый дешёвый
-//         </div>
-//         <div className={`${classes.tabs__el  } ${  classes.tabs__el_fast}`}>Самый быстрый</div>
-//     </section>
-// )

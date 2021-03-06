@@ -6,7 +6,7 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  padding: 20px 50px 20px 20px;
+  padding: 10px 50px 20px 20px;
   box-sizing: border-box;
   border: 1px solid transparent;
 }
@@ -20,23 +20,29 @@
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
-  line-height: 24px;
+  line-height: 41px;
   letter-spacing: 0;
   text-align: left;
   color: #2196F3;
 }
 .ticket__logo {
-
+  width: 20%;
 }
 .ticket__info-down {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ticket__segment {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 .ticket__city {
-
+  width:22%;
 }
-.ticket__city-cities {
+.ticket__city-title {
   font-family: Open Sans;
   font-size: 12px;
   font-style: normal;
@@ -59,7 +65,7 @@
   margin: 0;
 }
 .ticket__time {
-
+  width: 10%;
 }
 .ticket__time-title {
   font-family: Open Sans;
@@ -85,7 +91,7 @@
   margin: 0;
 }
 .ticket__transfer {
-
+  width: 20%;
 }
 .ticket__transfer-title {
   font-family: Open Sans;
