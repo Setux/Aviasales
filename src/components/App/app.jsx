@@ -6,13 +6,18 @@ import FilterBox from '../Filter-box';
 import Tabs from '../Tabs';
 import TicketList from '../Ticket-list';
 import classes from './app.module.scss';
+
 import logo from './logo.svg';
 import filterReducer from '../../reducer';
+
+const actionSanitizer = (action) =>
+  action.type === 'FILE_DOWNLOAD_SUCCESS' && action.data ? { ...action, data: '<<LONG_BLOB>>' } : action;
 
 const composeEnhancers =
   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-        // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+        actionSanitizer,
+        stateSanitizer: (state) => (state.data ? { ...state, data: '<<LONG_BLOB>>' } : state),
       })
     : compose;
 

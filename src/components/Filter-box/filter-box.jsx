@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import classes from './filter-box.module.scss';
 import * as actions from '../../actions';
 
-const FilterBox = ({ data, toggleCheckbox, toggleCheckAll }) => {
+const FilterBox = ({ data, filterAllTickets, filterTickets }) => {
   const renderInput = (label, id, isChecked, handler) => (
     <li key={id} className={classes['filter-item']}>
       <label className={classes.filter__label}>
@@ -20,8 +20,7 @@ const FilterBox = ({ data, toggleCheckbox, toggleCheckAll }) => {
       </label>
     </li>
   );
-  const renderElements = () =>
-    data.map(({ label, id, isChecked }) => renderInput(label, id, isChecked, toggleCheckbox));
+  const renderElements = () => data.map(({ label, id, isChecked }) => renderInput(label, id, isChecked, filterTickets));
 
   const areAllChecked = data.every((item) => item.isChecked);
 
@@ -29,7 +28,7 @@ const FilterBox = ({ data, toggleCheckbox, toggleCheckAll }) => {
     <section className={classes['filter-box']}>
       <h2 className={classes['filter-title']}>Количество пересадок</h2>
       <ul className={classes['filter-list']}>
-        {renderInput('Все', '1', areAllChecked, toggleCheckAll)}
+        {renderInput('Все', '1', areAllChecked, filterAllTickets)}
         {renderElements()}
       </ul>
     </section>
@@ -38,10 +37,11 @@ const FilterBox = ({ data, toggleCheckbox, toggleCheckAll }) => {
 
 FilterBox.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  toggleCheckbox: PropTypes.func.isRequired,
-  toggleCheckAll: PropTypes.func.isRequired,
+  filterTickets: PropTypes.func.isRequired,
+  filterAllTickets: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => state.filters;
+
 
 export default connect(mapStateToProps, actions)(FilterBox);

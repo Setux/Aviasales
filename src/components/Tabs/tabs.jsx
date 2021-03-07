@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import * as actions from '../../actions';
+import { getCheapTickets, getFastTickets } from '../../actions';
 import classes from './tabs.module.scss';
 
 const classNames = require('classnames');
 
 const Tabs = (props) => {
-  const { data, setCheap, setFast } = props;
+  const { data, onGetCheap, onGetFast } = props;
   // eslint-disable-next-line consistent-return
   const setClass = (item) => {
     if (item.isCheap && item.isActive) {
@@ -37,18 +37,22 @@ const Tabs = (props) => {
   const secondItem = data[1];
   return (
     <section className={classes.tabs}>
-      {renderBarItem(firstItem, setCheap)}
-      {renderBarItem(secondItem, setFast)}
+      {renderBarItem(firstItem, onGetCheap)}
+      {renderBarItem(secondItem, onGetFast)}
     </section>
   );
 };
 
 Tabs.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
-  setCheap: PropTypes.func.isRequired,
-  setFast: PropTypes.func.isRequired,
+  onGetCheap: PropTypes.func.isRequired,
+  onGetFast: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => state.bar;
+const mapDispatchToProps = (dispatch) => ({
+  onGetCheap: () => dispatch(getCheapTickets()),
+  onGetFast: () => dispatch(getFastTickets()),
+});
 
-export default connect(mapStateToProps, actions)(Tabs);
+export default connect(mapStateToProps, mapDispatchToProps)(Tabs);

@@ -1,3 +1,3 @@
-import FilterBox from "./filter-box";
+import FilterBox from './filter-box';
 
-export default FilterBox
+export default FilterBox;

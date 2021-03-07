@@ -1,16 +1,19 @@
-const axios = require('axios')
-
-const instance = axios.create({
-    baseURL: 'https://front-test.beta.aviasales.ru/'
-})
 export default class AviaService {
-    getID() {
-       return instance.get('search')
-    }
+  async getID() {
+    const response = await fetch('https://front-test.beta.aviasales.ru/search');
+    const data = await response.json();
+    return data.searchId;
+  }
 
-    async getTickets() {
-        const idResponse = await this.getID()
-        const id = idResponse.data.searchId
-        return instance.get(`tickets?searchId=${id}`)
+  async getTickets(id) {
+    const response = await fetch(`https://front-test.beta.aviasales.ru/tickets?searchId=${id}`);
+    if (response.status === 500) {
+      return this.getTickets(id);
     }
+    if (response.status === 404) {
+      throw new Error('This is end of this line!');
+    }
+    const data = await response.json();
+    return data;
+  }
 }
