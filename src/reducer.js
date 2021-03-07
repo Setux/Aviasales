@@ -17,6 +17,7 @@ const initialBarState = {
 const initialTicketsState = {
   data: [],
   filteredData: [],
+  delayedArr: [],
   filterOptions: [
     { isOn: true, id: '1' },
     { isOn: true, id: '2' },
@@ -74,7 +75,7 @@ const barReducer = (state = initialBarState, { type }) => {
 
 // eslint-disable-next-line consistent-return
 const ticketsReducer = (state = initialTicketsState, { type, payload }) => {
-  const { data, filteredData, isFetching, isLoad, filterOptions, isOnFast, isOnCheap } = state;
+  const { data, filteredData, delayedArr, isFetching, isLoad, filterOptions, isOnFast, isOnCheap } = state;
   let filtered = filteredData;
   let filterPortion;
   let filterOpt;
@@ -87,13 +88,19 @@ const ticketsReducer = (state = initialTicketsState, { type, payload }) => {
       };
     case 'LOAD_DATA':
       return state;
+    case 'LOAD_MORE':
+      return {
+        ...state,
+        delayedArr: [...delayedArr, ...filteredData.slice(delayedArr.length, delayedArr.length + 10)],
+      };
     case 'SET_CHEAP':
       filtered = filtered.sort((prev, next) => prev.price - next.price);
       return {
         ...state,
         filteredData: filtered,
         isOnCheap: true,
-        isOnFast: false
+        isOnFast: false,
+        delayedArr: [...filteredData.slice(0, 10)],
       };
     case 'SET_FAST':
       filtered = filtered.sort((prev, next) => {
@@ -111,7 +118,8 @@ const ticketsReducer = (state = initialTicketsState, { type, payload }) => {
         ...state,
         filteredData: filtered,
         isOnCheap: false,
-        isOnFast: true
+        isOnFast: true,
+        delayedArr: [...filteredData.slice(0, 10)],
       };
     case 'FETCHING':
       return { ...state, isFetching: !isFetching };
@@ -216,6 +224,7 @@ const ticketsReducer = (state = initialTicketsState, { type, payload }) => {
       return {
         ...state,
         filteredData: filtered,
+        delayedArr: [...filtered.slice(0, 10)],
       };
     default:
       return state;

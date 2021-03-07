@@ -43,5 +43,4 @@ FilterBox.propTypes = {
 
 const mapStateToProps = (state) => state.filters;
 
-
 export default connect(mapStateToProps, actions)(FilterBox);

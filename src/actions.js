@@ -76,6 +76,10 @@ const getTicket = async (id, arr) => {
   }
 };
 
+export const loadMore = () => ({
+  type: 'LOAD_MORE',
+});
+
 export const getListTickets = () => async (dispatch) => {
   dispatch(isFetching());
   const id = await aviaAPI.getID();
@@ -84,6 +88,7 @@ export const getListTickets = () => async (dispatch) => {
   dispatch(isFetching());
   dispatch(setTickets(tickets));
   dispatch(setFilterTickets());
+  dispatch(loadMore());
   dispatch(loadTickets());
 };
 
@@ -111,6 +116,6 @@ export const filterAllTickets = (event) => (dispatch) => {
   dispatch(isLoading());
   dispatch(toggleCheckAll(event));
   dispatch(filterToggleAll(event));
-  setTimeout(dispatch(setFilterTickets()), 1500);
+  dispatch(setFilterTickets());
   dispatch(isLoading());
 };
